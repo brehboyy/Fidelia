@@ -1,0 +1,134 @@
+<ion-content padding class="login auth-page">
+
+  <div class="auth-content">
+    <!-- Logo -->
+    <div padding-horizontal text-center>
+      <div class="logo"></div>
+      <h3 no-margin>
+        <ion-text color="light" class="fw700">
+          <ion-text color="secondary">Register</ion-text>
+        </ion-text>
+      </h3>
+    </div>
+
+    <!-- Register form -->
+    <form [formGroup]="onRegisterForm" class="list-form">
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="contact" item-start></ion-icon>
+          Nom
+        </ion-label>
+        <ion-input color="secondary" type="text" formControlName="nom"></ion-input>
+      </ion-item>
+      <p ion-text class="text08"
+        *ngIf="onRegisterForm.get('nom').touched && onRegisterForm.get('nom').hasError('required')">
+        <ion-text color="warning">
+          * Champs mal rempli
+        </ion-text>
+      </p>
+
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="briefcase" item-start></ion-icon>
+          Prenom
+        </ion-label>
+        <ion-input color="secondary" type="text" formControlName="prenom"></ion-input>
+      </ion-item>
+      <p ion-text class="text08"
+        *ngIf="onRegisterForm.get('prenom').touched && onRegisterForm.get('prenom').hasError('required')">
+        <ion-text color="warning">
+          * Champs mal rempli
+        </ion-text>
+      </p>
+
+      <ion-item no-padding class="animated fadeInUp"> 
+        <ion-label position="floating">
+          <ion-icon name="people" item-start></ion-icon>
+          Service
+        </ion-label>
+        <ion-select color="secondary" formControlName="serviceId" cancelText="Annuler">
+          <ion-select-option *ngFor="let service of services" value={{service.SER_ID}}>{{service.SER_NOM}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <p ion-text class="text08"
+        *ngIf="onRegisterForm.get('serviceId').touched && onRegisterForm.get('serviceId').hasError('required')">
+        <ion-text color="warning">
+          * Champs mal rempli
+        </ion-text>
+      </p>
+
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="mail" item-start></ion-icon>
+          Email
+        </ion-label>
+        <ion-input color="secondary" type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <p ion-text class="text08"
+        *ngIf="onRegisterForm.get('email').touched && onRegisterForm.get('email').hasError('required')">
+        <ion-text color="warning">
+          * Champs mal rempli
+        </ion-text>
+      </p>
+
+      <ion-item no-padding class="animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="lock" item-start></ion-icon>
+          Mot de passe
+        </ion-label>
+        <ion-input color="secondary" type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <p ion-text color="warning" class="text08"
+        *ngIf="onRegisterForm.get('password').touched && onRegisterForm.get('password').hasError('required')">
+        <ion-text color="warning">
+          *  Le mot de passe doit etre compris entre 8 et 50 caracteres
+        </ion-text>
+      </p>
+    </form>
+
+    <div margin-top>
+      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="signUp()"
+        [disabled]="!onRegisterForm.valid" tappable>
+        <ion-icon name="log-in"></ion-icon>
+        S'enregistrer
+      </ion-button>
+
+      <p text-center>
+        <ion-text color="light">
+          Ou s'enregistrer avec
+        </ion-text>
+      </p>
+
+      <ion-grid class="btn-group">
+        <ion-row>
+          <ion-col size="4">
+            <ion-button shape="round" expand="full" fill="outline" (click)="testlog()" color="tertiary">
+              <ion-icon slot="icon-only" name="logo-facebook"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button shape="round" expand="full" fill="outline" color="tertiary">
+              <ion-icon slot="icon-only" name="logo-twitter"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="4">
+            <ion-button shape="round" expand="full" fill="outline" color="tertiary">
+              <ion-icon slot="icon-only" name="logo-googleplus"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+
+    <!-- Other links -->
+    <div text-center margin-top>
+      <span (click)="goToLogin()" tappable>
+        <ion-text color="light">
+          <strong>J'ai déjà un compte!</strong>
+        </ion-text>
+      </span>
+    </div>
+
+  </div>
+</ion-content>

@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>SetMenu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4">
+        <ionic-calendar-date-picker class="calendar" [dayLabels]="dayLabel" [monthLabels]="monthLabel"
+          (onSelect)="dateSelected($event)"></ionic-calendar-date-picker>
+      </ion-col>
+      <ion-col size="8">
+        <ion-button>Ajouter le menu de la semaine</ion-button>
+        <ion-button>Supprimer le menu de la semaine</ion-button>
+        <ion-button>Exporter le menu ddu jour</ion-button>
+        <ion-button>Supprimer toout les menus</ion-button>
+        <ion-button>imprimer menu du jour</ion-button>
+        <ion-button (click)="addRepas()">Ajouter un plat</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="2">
+        <ion-list>
+          <ion-radio-group [(ngModel)]="typeplat" (ionChange)="onChange($event)">
+            <ion-list-header class="ion-text-center">
+              <ion-label color="primary" class="fw500">Type de plat</ion-label>
+            </ion-list-header>
+
+            <ion-item>
+              <ion-label>Tous</ion-label>
+              <ion-radio slot="start" value="0" checked></ion-radio>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Entrée</ion-label>
+              <ion-radio slot="start" value="1"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Plat</ion-label>
+              <ion-radio slot="start" value="2"></ion-radio>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Legume</ion-label>
+              <ion-radio slot="start" value="3"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-label>Dessert</ion-label>
+              <ion-radio slot="start" value="4"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </ion-col>
+      <ion-col size='10'>
+        <ion-list>
+          <ion-row size="12">
+            <ion-col size="5">
+              <ion-list-header>
+                <ion-label color="primary" class="fw500">Nom plat</ion-label>
+              </ion-list-header>
+            </ion-col>
+            <ion-col size="1">
+              <ion-list-header>
+                <ion-label color="primary" class="fw500">Lundi</ion-label>
+              </ion-list-header>
+            </ion-col>
+            <ion-col size="1">
+              <ion-list-header>
+                <ion-label color="primary" class="fw500">Mardi</ion-label>
+              </ion-list-header>
+            </ion-col>
+            <ion-col size="1">
+              <ion-list-header>
+                <ion-label color="primary" class="fw500">Mercredi</ion-label>
+              </ion-list-header>
+            </ion-col>
+            <ion-col size="1">
+              <ion-list-header>
+                <ion-label color="primary" class="fw500">Jeudi</ion-label>
+              </ion-list-header>
+            </ion-col>
+            <ion-col size="1">
+              <ion-list-header>
+                <ion-label color="primary" class="fw500">Vendredi</ion-label>
+              </ion-list-header>
+            </ion-col>
+            <ion-col size="2">
+              <ion-list-header>
+                <ion-label color="primary" class="fw500">Nombre plat</ion-label>
+              </ion-list-header>
+            </ion-col>
+          </ion-row>
+          <ion-row *ngFor="let plat of plats | filter : 'PLA_TYPEID' : typeplat" class="ion-text-center" size="12">
+            <ion-col size="5" class="ion-text-left">
+              {{plat.PLA_NOM}}
+            </ion-col>
+            <ion-col size="1">
+              <ion-checkbox></ion-checkbox>
+            </ion-col>
+            <ion-col size="1">
+              <ion-checkbox></ion-checkbox>
+            </ion-col>
+            <ion-col size="1">
+              <ion-checkbox></ion-checkbox>
+            </ion-col>
+            <ion-col size="1">
+              <ion-checkbox></ion-checkbox>
+            </ion-col>
+            <ion-col size="1">
+              <ion-checkbox></ion-checkbox>
+            </ion-col>
+            <ion-col size="2">
+              <ion-input type="number"></ion-input>
+            </ion-col>
+          </ion-row>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

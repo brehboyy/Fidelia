@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>addPlat</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-list-header>Single Selection</ion-list-header>
+  
+    <ion-item>
+      <ion-label  position="floating">Nom plat</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label  position="floating">Type plat</ion-label>
+      <ion-select  okText="Okay" cancelText="Annuler">
+        <ion-select-option value="1">Entrée</ion-select-option>
+        <ion-select-option value="2">Plat</ion-select-option>
+        <ion-select-option value="3">Legume</ion-select-option>
+        <ion-select-option value="4">Dessert</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-button expand="full" fill="outline">Enregistrer</ion-button>
+</ion-content>
